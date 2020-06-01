@@ -1,0 +1,11 @@
+<div class="example-box rectangle" cdkDrag  [id]="field.name" ngResizable
+  (resizeEnd)="onResizeEnd(field,$event)" style="margin-right:200px;margin-bottom:50px;"> 
+    <div class="box">
+      <h4 class="table-name">{{field.name}}  <a (click)="edit.emit(field)">Edit</a></h4>
+      <div class="column-list">
+        <ul>
+          <li *ngFor="let column of field.columns"> {{column.name}}</li>
+        </ul>
+      </div>
+    </div>
+</div>
