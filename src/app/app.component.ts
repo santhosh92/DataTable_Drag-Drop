@@ -82,6 +82,21 @@ export class AppComponent {
         {
           'name': 'course_id',
           'alias': ''
+        },{
+          'name': 'offering_id1',
+          'alias': ''
+        },
+        {
+          'name': 'offering_name1',
+          'alias': ''
+        },
+        {
+          'name': 'instructor_id1',
+          'alias': ''
+        },
+        {
+          'name': 'course_id1',
+          'alias': ''
         }
       ],
       'keys': {

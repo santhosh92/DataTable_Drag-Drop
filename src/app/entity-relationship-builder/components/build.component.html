@@ -1,15 +1,14 @@
 <div cdkDropListGroup fxLayout="row">
     <div class="example-container" fxFlex="120px">
         <h2>Tables</h2>
-        <mat-list cdkDropList [cdkDropListData]="tableList" (cdkDropListDropped)="drop($event)">
-            <mat-list-item *ngFor="let item of tableList" cdkDrag> {{item.name}} </mat-list-item>
+        <mat-list cdkDropList [cdkDropListData]="tableList" (cdkDropListDropped)="drop($event)" class="table-list">
+            <mat-list-item *ngFor="let item of tableList" cdkDrag class="table-item"> {{item.name}} </mat-list-item>
         </mat-list>
     </div>
 
     <div class="example-container" fxFlex>
         <h2>Build Template</h2>
-        <div cdkDropList class="example-list" fxLayout="row wrap" fxLayoutAlign="start center" cdkDropList [cdkDropListData]="data.tables"
-            class="example-list" (cdkDropListDropped)="drop($event)">
+        <div cdkDropList class="example-list" fxLayout="column" fxLayoutAlign="start start" cdkDropList [cdkDropListData]="data.tables" (cdkDropListDropped)="drop($event)">
             <ng-container *ngFor="let field of data.tables; let i = index">
                 <entity-field [field]="field" (edit)="edit($event)" [field]="field" fxFlex></entity-field>
             </ng-container>

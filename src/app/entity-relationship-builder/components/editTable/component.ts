@@ -14,6 +14,7 @@ export class EditTableComponent implements OnInit {
   table: any;
   tableList: any[];
   entityRelationship: any[];
+  tableRelation : any[];
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,7 +24,14 @@ export class EditTableComponent implements OnInit {
   ngOnInit() {
     this.table = this.data.currentTable;
     this.tableList = this.data.tables;
-    this.entityRelationship = this.data.entityRelationship || [];
+    this.tableRelation = this.data.tables.filter(data => this.table.name !== data.name);
+    this.entityRelationship = [{
+      'name': '',
+      'primaryTable': this.table.name,
+      'relationalTable': '',
+      'primaryKey': '',
+      'foreginKey': ''
+    }];
   }
 
   addEr() {
