@@ -1,5 +1,6 @@
-<div class="example-box rectangle" cdkDrag  [id]="field.name" ngResizable
-  (resizeEnd)="onResizeEnd(field,$event)"> 
+<div class="example-box item" cdkDragBoundary=".example-boundary" cdkDrag  [id]="field.name" (cdkDragEnded)="dragEnd($event)"  #item
+  [style.top.px]="field.position.y"
+  [style.left.px]="field.position.x"> 
     <div class="box">
       <div class="contentCenter table-header-name">
         <span><h4 class="table-name">{{field.name}}</h4></span>

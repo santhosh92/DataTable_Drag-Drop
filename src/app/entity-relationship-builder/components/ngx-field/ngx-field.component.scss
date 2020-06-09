@@ -12,16 +12,15 @@
     z-index: 1;
 }
 
-.rectangle{
-    margin:10px;
-}
+
 
 .box {
     min-height: 150px;
-    max-height: 150px;
     min-width: 200px;
     max-width: 200px;
     border: 1px solid #dcdcdc;
+    cursor: move;
+    background-color: white;
 }
 
 .column-list {
@@ -43,3 +42,13 @@
 .table-header-name{
     margin-left:10px;
 }
+
+.example-boundary {
+    min-width: 100%;
+    border: dotted #ccc 2px;
+  }
+
+  .item {
+    position: absolute;
+  }
+

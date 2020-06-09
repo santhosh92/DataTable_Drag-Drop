@@ -24,12 +24,14 @@ export class AppComponent {
           'alias': ''
         }
       ],
+      'position':{x: 1137, y: 226},
       'keys': {
         'primary': 'instructor_id'
       }
     },
     {
       'name': 'course',
+      'position':{x: 100, y: 100},
       'columns': [
         {
           'name': 'course_id',
@@ -50,6 +52,7 @@ export class AppComponent {
     },
     {
       'name': 'student',
+      'position':{x: 250, y: 250},
       'columns': [
         {
           'name': 'student_id',
@@ -66,6 +69,7 @@ export class AppComponent {
     },
     {
       'name': 'offering',
+      'position':{x: 300, y: 300},
       'columns': [
         {
           'name': 'offering_id',
@@ -106,6 +110,7 @@ export class AppComponent {
     },
     {
       'name': 'attendance',
+      'position':{x: 0, y: 0},
       'columns': [
         {
           'name': 'offering_id',

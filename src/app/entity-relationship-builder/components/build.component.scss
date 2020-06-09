@@ -179,5 +179,31 @@
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
 
+  .example-boundary {
+    min-width: 100%;
+    // min-height: 2000px;
+    border: dotted #ccc 2px;
+    position: relative;
+    // background: #ccc;
+    display: block;
+    margin: auto;
+    // overflow: auto;
+  }
+
+  .item {
+    position: absolute;
+  }
+  
 
 
+  .dragHandle {
+    position: absolute;
+    color: coral;
+    z-index: 999;
+  }
+  
+  .dragHandle.corner {
+    width: 15px;
+    height: 15px;
+    cursor: nwse-resize;
+  }
