@@ -1,0 +1,19 @@
+<div fxLayout="column">
+    <mat-form-field appearance="standard" fxFlex>
+        <mat-label>Primary Table</mat-label>
+        <mat-select name="primaryTable" [(ngModel)]="er.primaryTable" (selectionChange)="onTableSelect($event.value)">
+            <mat-option *ngFor="let table of tableList" [value]="table.name">
+                {{table.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" fxFlex *ngIf="columns">
+        <mat-label>Primary Key</mat-label>
+        <mat-select name="elationalTable" [(ngModel)]="er.primaryKey">
+            <mat-option *ngFor="let column of columns" [value]="column.name">
+                {{column.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

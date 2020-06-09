@@ -207,3 +207,164 @@
     height: 15px;
     cursor: nwse-resize;
   }
+
+  .node {
+    height: auto;
+    position: absolute;
+    min-width: 100px;
+    max-width: 250px;
+    background: #d8d8d8;
+    margin: 10px;
+  }
+  .slot-label {
+    flex: 100px;
+    min-width: 100px;
+    max-width: 250px;
+  }
+  .node-name .slot-label {
+    flex: 100px;
+    min-width: 100px;
+    max-width: 250px;
+    padding: 0 5px;
+    border: 3px #5b5b5b solid;
+  }
+  
+  .label-text {
+    padding: 0 5px;
+  }
+  .slot-button {
+    padding: 4px 4px 4px 6px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "Source Code Pro", monospace;
+    background: transparent;
+    border: 4px #8e8e8e solid;
+    color: #5b5b5b;
+  }
+  .slot-config {
+    padding: 4px 4px 4px 6px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "Source Code Pro", monospace;
+    background: transparent;
+    border: 1px #8e8e8e solid;
+    color: #5b5b5b;
+    border-radius: 30px;
+  }
+  .field-active,
+  .field-inactive {
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "Source Code Pro", monospace;
+    background: #fff;
+    color: #5b5b5b;
+    text-transform: none;
+    font-style: italic;
+  }
+  .field-inactive {
+    border: 3px #5b5b5b solid;
+    background: #ccc;
+    color: #5b5b5b;
+    text-transform: none;
+    font-style: italic;
+  }
+  .slot-active,
+  .slot-inactive {
+    padding: 4px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "Source Code Pro", monospace;
+    border: 3px #5b5b5b solid;
+    background: #fff;
+    color: #5b5b5b;
+  }
+  .slot-inactive {
+    background: #8e8e8e;
+    border: 3px #8e8e8e solid;
+    color: #fff;
+  }
+  .slot:last-child {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .elevation-3 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .slot-anchor-small {
+    width: 8px;
+    height: 8px;
+    border-width: 4px;
+    border-color: #d8d8d8;
+    border-style: solid;
+  }
+  .slot-anchor-node-name {
+    width: 22px;
+    height: 22px;
+    border-width: 3px;
+    border-color: #d8d8d8;
+    border-style: solid;
+  }
+  .slot-anchor-active {
+    background: #fb8c00;
+    border-color: #fb8c00;
+    border-style: solid;
+  }
+  
+  .slot-anchor-inactive {
+    background: #d8d8d8;
+    border-color: #d8d8d8;
+    border-style: solid;
+  }
+  .node-name {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0px 0px;
+    text-transform: uppercase;
+    font-family: "Source Code Pro", monospace;
+    color: #dddddd;
+    background: #5b5b5b;
+    margin: 0;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .node-name.slot-active {
+    border-style: none;
+  }
+  .node-name .slot-anchor-inactive {
+    background: #fff;
+    border-color: #5b5b5b;
+    border-style: solid;
+  }
+  .node-name.slot-active .slot-anchor-node-name.slot-anchor-active {
+    background: #30c117;
+    border-color: #30c117;
+    border-style: solid;
+  }
+  

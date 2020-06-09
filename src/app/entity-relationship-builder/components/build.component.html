@@ -1,23 +1,38 @@
 <div cdkDropListGroup fxLayout="row">
     <div class="example-container" fxFlex="120px">
         <h2>Tables</h2>
-        <mat-list cdkDropList [cdkDropListData]="tableList" (cdkDropListDropped)="drop($event)" class="table-list">
-            <mat-list-item *ngFor="let item of tableList" cdkDrag class="table-item"> {{item.name}} </mat-list-item>
+        <mat-list dnd-sortable-container [dropZones]="['source-dropZone']" class="table-list">
+            <mat-list-item *ngFor="let item of tableList" dnd-sortable [sortableIndex]="x" [dragEnabled]="true" [dragData]="item"> {{item.name}} </mat-list-item>
         </mat-list>
     </div>
 
     <div class="example-container" fxFlex>
         <h2>Build Template</h2>
-        <div class="example-boundary newboundary" #resizeBox [style.height.px]="height" [style.width.px]="width">
+        <div id="templatebuilder" class="example-boundary newboundary" #resizeBox [style.height.px]="height" [style.width.px]="width"
+            dnd-droppable (onDropSuccess)="onDrop($event)" [dropZones]="['source-dropZone']">
             <!-- <span #dragHandleCorner cdkDragLockAxis="y" class="dragHandle corner" cdkDrag (cdkDragMoved)="dragMove(dragHandleCorner, $event)"></span> -->
-            <span class="material-icons dragHandle corner" #dragHandleCorner cdkDragLockAxis="y" cdkDrag (cdkDragMoved)="dragMove(dragHandleCorner, $event)">
+            <!-- <span class="material-icons dragHandle corner" #dragHandleCorner cdkDragLockAxis="y" cdkDrag (cdkDragMoved)="dragMove(dragHandleCorner, $event)">
                 aspect_ratio
-                </span>
-        <div cdkDropList fxLayout="column" fxLayoutAlign="start start" cdkDropList [cdkDropListData]="data.tables" (cdkDropListDropped)="drop($event)" [style.height.px]="height" [style.width.px]="width" (cdkDropListEntered)="dragenter($event)">
-        
-            <div *ngFor="let field of data.tables; let i = index">
-                <entity-field [field]="field" (edit)="edit($event)" [field]="field" fxFlex (rerenderTable)="rerenderTable($event)"></entity-field>
-            </div>
+            </span> -->
+
+
+            <div [id]="field.name" *ngFor="let field of data.tables; let i = index" class="node" [plainDrag]="field.name" [entityCordinates]="data.entityCordinates">
+                <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+                    <div class="slot-label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">{{field.name}}</div>
+                    <div class="slot-anchor-node-name">
+                        <a (click)="edit(field)">Edit</a>
+                    </div>
+                </div>
+                <div id="{{field.name + column.name}}" class="slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"
+                    *ngFor="let column of field.columns">
+                    <div class="slot-anchor-small slot-anchor-inactive"></div>
+                    <div class="slot-label">
+                        <span class="label-text">{{column.name}}</span>
+                    </div>
+                    <div id="slot-anchor-1" class="slot-anchor-small slot-anchor-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+                </div>
+
+                <!-- <entity-field [field]="field" (edit)="edit($event)" [field]="field"></entity-field> -->
             </div>
         </div>
     </div>
