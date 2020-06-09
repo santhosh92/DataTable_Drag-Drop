@@ -2,24 +2,24 @@
 <form novalidate (ngSubmit)="save()">
     <div mat-dialog-content>
         <div class="result" fxLayout="column" fxLayout.lt-sm="column">
-            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let column of table?.columns; let i = index">
+            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let column of table?.columns; let i = index" fxLayoutGap="16px">
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Column Name</mat-label>
-                    <input matInput [(ngModel)]="column.name" [name]="column.name">
+                    <input matInput [(ngModel)]="column.name" [name]="column.name" disabled>
                 </mat-form-field>
 
                 <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Column Alias Name </mat-label>
-                    <input matInput placeholder="Enter Alias name" [(ngModel)]="column.alias" name="{column.name}+'alias'">
+                    <mat-label>Alias </mat-label>
+                    <input matInput  [(ngModel)]="column.alias" name="{column.name}+'alias'">
                 </mat-form-field>
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="result" fxLayout="column" fxLayout.lt-sm="column">
-            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let er of entityRelationship; let i = index">
+        <div class="result" fxLayout="column" fxLayout.lt-sm="column" *ngIf="tableList.length > 1">
+            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let er of entityRelationship; let i = index" fxLayoutGap="16px">
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Primary Table</mat-label>
-                    <mat-select name="primaryTable" [(ngModel)]="er.primaryTable">
+                    <mat-select name="primaryTable" [(ngModel)]="er.primaryTable" disabled>
                         <mat-option *ngFor="let table of tableList" [value]="table.name">
                             {{table.name}}
                         </mat-option>
@@ -29,7 +29,7 @@
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Relational Table</mat-label>
                     <mat-select name="elationalTable" [(ngModel)]="er.relationalTable">
-                        <mat-option *ngFor="let table of tableList" [value]="table.name">
+                        <mat-option *ngFor="let table of tableRelation" [value]="table.name">
                             {{table.name}}
                         </mat-option>
                     </mat-select>
@@ -37,10 +37,12 @@
             </div>
 
         </div>
-        <button type="button" mat-raised-button (click)="addEr()">Add Entity Relationship</button>
+        
+        <!-- <button type="button" mat-raised-button (click)="addEr()" class="relationBtn">Add Entity Relationship</button> -->
+        
         <!-- <pre>{{actionItemsForm.value | json }}</pre> -->
     </div>
-
+    <mat-divider></mat-divider>
     <div mat-dialog-actions>
         <div fxFlex></div>
         <button type="submit" mat-raised-button color="primary" [disabled]="submitted">Save</button>

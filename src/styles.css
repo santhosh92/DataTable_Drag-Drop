@@ -10,3 +10,21 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 .mat-list-item-content{
     height: 25px !important;
 }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.align-center{
+    text-align: center !important;
+}
+
+.contentCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

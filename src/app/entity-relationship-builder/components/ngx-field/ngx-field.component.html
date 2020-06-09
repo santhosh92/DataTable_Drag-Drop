@@ -1,7 +1,14 @@
 <div class="example-box rectangle" cdkDrag  [id]="field.name" ngResizable
-  (resizeEnd)="onResizeEnd(field,$event)" style="margin-right:200px;margin-bottom:50px;"> 
+  (resizeEnd)="onResizeEnd(field,$event)"> 
     <div class="box">
-      <h4 class="table-name">{{field.name}}  <a (click)="edit.emit(field)">Edit</a></h4>
+      <div class="contentCenter table-header-name">
+        <span><h4 class="table-name">{{field.name}}</h4></span>
+        <span class="spacer"></span>
+        <button mat-icon-button color="primary" (click)="edit.emit(field)" >
+          <mat-icon aria-label="edit icon">edit</mat-icon>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
       <div class="column-list">
         <ul>
           <li *ngFor="let column of field.columns"> {{column.name}}</li>
