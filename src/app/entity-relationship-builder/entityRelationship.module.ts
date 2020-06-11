@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EntityFieldComponent } from './components/ngx-field/ngx-field.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditTableComponent } from './components/editTable/component';
+import {DndModule} from 'ng2-dnd';
+import { TableRelationComponent } from './components/table-relation/table-relation.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -16,13 +18,15 @@ import { EditTableComponent } from './components/editTable/component';
         FormsModule,
         FlexLayoutModule,
         BrowserModule,
+        DndModule.forRoot(),
         BrowserAnimationsModule,
         MaterialModule
     ],
     declarations: [
         BuildEntityComponent,
         EntityFieldComponent,
-        EditTableComponent
+        EditTableComponent,
+        TableRelationComponent
     ],
     entryComponents: [BuildEntityComponent, EditTableComponent],
     exports: [

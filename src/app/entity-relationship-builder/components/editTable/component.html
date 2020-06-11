@@ -16,7 +16,9 @@
         </div>
         <mat-divider></mat-divider>
         <div class="result" fxLayout="column" fxLayout.lt-sm="column" *ngIf="tableList.length > 1">
-            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let er of entityRelationship; let i = index" fxLayoutGap="16px">
+            <div class="mat-h2" [ngStyle]="{margin: '10px 0'}">Table Relation</div>
+            <app-table-relation [entityRelationship]="entityRelationship" [tableList]="tableList" [tableRelation]="tableRelation" (add)="addEr()" (remove)="removeEr($event)"></app-table-relation>
+            <!-- <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let er of entityRelationship; let i = index; last as isLast" fxLayoutGap="16px">
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Primary Table</mat-label>
                     <mat-select name="primaryTable" [(ngModel)]="er.primaryTable" disabled>
@@ -25,16 +27,38 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>column Name</mat-label>
+                    <mat-select name="primaryKey" [(ngModel)]="er.primaryKey">
+                        <mat-option *ngFor="let column of columns(er.primaryTable).columns" [value]="column.name">
+                            {{column.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Relational Table</mat-label>
-                    <mat-select name="elationalTable" [(ngModel)]="er.relationalTable">
+                    <mat-select name="relationalTable" [(ngModel)]="er.relationalTable">
                         <mat-option *ngFor="let table of tableRelation" [value]="table.name">
                             {{table.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>column Name</mat-label>
+                    <mat-select name="foreginKey" [(ngModel)]="er.foreginKey">
+                        <mat-option *ngFor="let column of columns(er.relationalTable)?.columns" [value]="column.name">
+                            {{column.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div fxFlex *ngIf="isLast">
+                    <button  mat-raised-button (click)="addEr()" type="button">Add</button>
+                </div>
+                <div fxFlex *ngIf="!isLast">
+                    <button  mat-raised-button (click)="removeEr(i)" type="button">Remove</button>
+                </div>
+            </div> -->
 
         </div>
         

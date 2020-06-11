@@ -1,24 +1,47 @@
-<div cdkDropListGroup fxLayout="row">
-    <div class="example-container" fxFlex="120px">
-        <h2>Tables</h2>
-        <mat-list cdkDropList [cdkDropListData]="tableList" (cdkDropListDropped)="drop($event)" class="table-list">
-            <mat-list-item *ngFor="let item of tableList" cdkDrag class="table-item"> {{item.name}} </mat-list-item>
-        </mat-list>
+<div class="container-fluid">
+    <div [ngStyle]="{'marginTop':'10px'}">
+        <mat-form-field class="templatename">
+            <mat-label>Template Name</mat-label>
+            <input matInput>
+          </mat-form-field>
     </div>
-
-    <div class="example-container" fxFlex>
-        <h2>Build Template</h2>
-        <div class="example-boundary newboundary" #resizeBox [style.height.px]="height" [style.width.px]="width">
-            <!-- <span #dragHandleCorner cdkDragLockAxis="y" class="dragHandle corner" cdkDrag (cdkDragMoved)="dragMove(dragHandleCorner, $event)"></span> -->
-            <span class="material-icons dragHandle corner" #dragHandleCorner cdkDragLockAxis="y" cdkDrag (cdkDragMoved)="dragMove(dragHandleCorner, $event)">
-                aspect_ratio
-                </span>
-        <div cdkDropList fxLayout="column" fxLayoutAlign="start start" cdkDropList [cdkDropListData]="data.tables" (cdkDropListDropped)="drop($event)" [style.height.px]="height" [style.width.px]="width" (cdkDropListEntered)="dragenter($event)">
-        
-            <div *ngFor="let field of data.tables; let i = index">
-                <entity-field [field]="field" (edit)="edit($event)" [field]="field" fxFlex (rerenderTable)="rerenderTable($event)"></entity-field>
-            </div>
+<div fxLayout="row">
+    <div fxFlex="200px" [ngStyle]="{marginRight: '15px'}">
+        <div class="panel panel-success" [ngStyle]="{textAlign: 'center'}">
+            <h4>Tables</h4>
+            <mat-divider></mat-divider>
+            <div [ngStyle]="{padding: '20px 15px 0'}">
+                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of tableList">
+                    <div [ngStyle]="{padding: '10px'}">
+                        <div>{{data.name}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div fxFlex>
+        <div dnd-droppable class="panel panel-info" id="dropArea" (onDropSuccess)="transferDataSuccess($event)" [ngStyle]="{height: '1000px', position: 'relative'}">
+            <!-- <div *ngFor="let field of data.tables; let i = index"> -->
+                <div *ngFor="let field of data.tables; let i = index" class="item" [ngStyle]="{zIndex: '1'}" [id]="field.name"> 
+                    <div class="box">
+                      <div class="contentCenter table-header-name">
+                        <span><h4 class="table-name">{{field.name}}</h4></span>
+                        <span class="spacer"></span>
+                        <button mat-icon-button color="primary" (click)="edit(field)" >
+                          <mat-icon aria-label="edit icon">edit</mat-icon>
+                        </button>
+                      </div>
+                      <mat-divider></mat-divider>
+                      <div class="column-list">
+                        <ul>
+                          <li *ngFor="let column of field.columns"> {{column.name}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
+                <!-- <div [hidden]="!data.tables.length > 0" *ngFor="let value of data.tables"  [style.top.px]="value.position.y" [style.left.px]="value.position.x" [ngStyle]="{position:'absolute'}">{{value.data | json}}</div> -->
+            <!-- </div> -->
+    </div>
+</div>
 </div>

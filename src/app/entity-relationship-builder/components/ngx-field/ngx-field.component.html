@@ -1,18 +1,16 @@
-<div class="example-box item" cdkDragBoundary=".example-boundary" cdkDrag  [id]="field.name" (cdkDragEnded)="dragEnd($event)"  #item
-  [style.top.px]="field.position.y"
-  [style.left.px]="field.position.x"> 
+<div class="example-box item" [ngStyle]="{zIndex: '1'}" [id]="field.data.name" [style.top.px]="field.position.y" [style.left.px]="field.position.x"> 
     <div class="box">
       <div class="contentCenter table-header-name">
-        <span><h4 class="table-name">{{field.name}}</h4></span>
+        <span><h4 class="table-name">{{field.data.name}}</h4></span>
         <span class="spacer"></span>
-        <button mat-icon-button color="primary" (click)="edit.emit(field)" >
+        <button mat-icon-button color="primary" (click)="edit.emit(field.data)" >
           <mat-icon aria-label="edit icon">edit</mat-icon>
         </button>
       </div>
       <mat-divider></mat-divider>
       <div class="column-list">
         <ul>
-          <li *ngFor="let column of field.columns"> {{column.name}}</li>
+          <li *ngFor="let column of field.data.columns"> {{column.name}}</li>
         </ul>
       </div>
     </div>

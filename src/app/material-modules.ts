@@ -37,7 +37,7 @@ import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   exports: [
-    DragDropModule,
+    // DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

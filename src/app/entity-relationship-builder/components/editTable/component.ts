@@ -22,10 +22,11 @@ export class EditTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.table = this.data.currentTable;
+    console.log(this.data.tables);
+    this.table = JSON.parse(JSON.stringify(this.data.currentTable));
     this.tableList = this.data.tables;
     this.tableRelation = this.data.tables.filter(data => this.table.name !== data.name);
-    this.entityRelationship = this.data.entityRelationship.length > 0 ?  this.data.entityRelationship : [{
+    this.entityRelationship = this.data.entityRelationship.length > 0 ?  [...this.data.entityRelationship] : [{
       'name': '',
       'primaryTable': this.table.name,
       'relationalTable': '',
@@ -35,6 +36,7 @@ export class EditTableComponent implements OnInit {
   }
 
   addEr() {
+    console.log(this.entityRelationship);
     this.entityRelationship.push({
       'name': '',
       'primaryTable': this.table.name,
@@ -42,6 +44,17 @@ export class EditTableComponent implements OnInit {
       'primaryKey': '',
       'foreginKey': ''
     });
+    
+  }
+
+  removeEr(index) {
+    console.log(index,"dddddddddddddd");
+    this.entityRelationship.splice(index,1);
+    console.log(this.entityRelationship);
+  }
+
+  columns(tableName){
+    return this.tableList.find(data => data.name === tableName);
   }
 
   public save() {
