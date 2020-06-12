@@ -35,6 +35,16 @@ export class EditTableComponent implements OnInit {
     }];
   }
 
+  search(term: string) {
+    if(!term) {
+        this.table.columns = this.table.columns;
+        } else {
+          this.table.columns = this.table.columns.filter((x: { name: string; }) => 
+            x.name.trim().toLowerCase().includes(term.trim().toLowerCase())
+        );
+  }
+}
+
   addEr() {
     console.log(this.entityRelationship);
     this.entityRelationship.push({

@@ -1,4 +1,10 @@
 <h1 mat-dialog-title>Configure Table {{table?.name}}</h1>
+<div>
+    <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput name="searchData" type="search" (keyup)='search($event.target.value)'>
+    </mat-form-field>
+</div>
 <form novalidate (ngSubmit)="save()">
     <div mat-dialog-content>
         <div class="result" fxLayout="column" fxLayout.lt-sm="column">

@@ -9,6 +9,12 @@
     <div fxFlex="200px" [ngStyle]="{marginRight: '15px'}">
         <div class="panel panel-success" [ngStyle]="{textAlign: 'center'}">
             <h4>Tables</h4>
+            <div>
+                <mat-form-field>
+                    <mat-label>Search</mat-label>
+                    <input matInput name="searchData" type="search" (keyup)='search($event.target.value)'>
+                </mat-form-field>
+            </div>
             <mat-divider></mat-divider>
             <div [ngStyle]="{padding: '20px 15px 0'}">
                 <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of tableList">
@@ -24,19 +30,19 @@
             <!-- <div *ngFor="let field of data.tables; let i = index"> -->
                 <div *ngFor="let field of data.tables; let i = index" class="item" [ngStyle]="{zIndex: '1'}" [id]="field.name"> 
                     <div class="box">
-                      <div class="contentCenter table-header-name">
-                        <span><h4 class="table-name">{{field.name}}</h4></span>
-                        <span class="spacer"></span>
-                        <button mat-icon-button color="primary" (click)="edit(field)" >
-                          <mat-icon aria-label="edit icon">edit</mat-icon>
-                        </button>
-                      </div>
-                      <mat-divider></mat-divider>
-                      <div class="column-list">
-                        <ul>
-                          <li *ngFor="let column of field.columns"> {{column.name}}</li>
-                        </ul>
-                      </div>
+                        <div class="contentCenter table-header-name">
+                            <span><h4 class="table-name">{{field.name}}</h4></span>
+                            <span class="spacer"></span>
+                            <button mat-icon-button color="primary" (click)="edit(field)" >
+                            <mat-icon aria-label="edit icon">edit</mat-icon>
+                            </button>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="column-list">
+                            <ul>
+                                <li *ngFor="let column of field.columns">{{column.name}}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

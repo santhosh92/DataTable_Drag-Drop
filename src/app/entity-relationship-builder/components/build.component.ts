@@ -50,6 +50,16 @@ export class BuildEntityComponent implements OnInit, AfterViewInit {
         // this.formBuilder.mergeField(this.data.tables);
     }
 
+    search(term: string) {
+        if(!term) {
+            this.tableList = this.tableList;
+            } else {
+            this.tableList = this.tableList.filter(x => 
+                x.name.trim().toLowerCase().includes(term.trim().toLowerCase())
+            );
+        }
+    }
+
     transferData: Array<any> = [{id: 1, msg: 'Hello'},{id: 2, msg: 'Hi'}];
     receivedData: Array<any> = [];
     
