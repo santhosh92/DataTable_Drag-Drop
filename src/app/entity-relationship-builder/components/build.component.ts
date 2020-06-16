@@ -24,6 +24,7 @@ export interface erModel {
 export class BuildEntityComponent implements OnInit, AfterViewInit {
     @Input() data: erModel;
     @Input() tableList: any[];
+    filterdata = [];
     fieldSub: Subscription;
     public fieldsList: Observable<any>;
     public defaultWidth = 24;
@@ -48,14 +49,15 @@ export class BuildEntityComponent implements OnInit, AfterViewInit {
         // this.fieldsList = this.formBuilder.fields$.pipe();
         // this.formBuilder.createForm('section');
         // this.formBuilder.mergeField(this.data.tables);
+        this.filterdata = this.tableList;
     }
 
     search(term: string) {
         if(!term) {
-            this.tableList = this.tableList;
+            this.filterdata = this.tableList;
             } else {
-            this.tableList = this.tableList.filter(x => 
-                x.name.trim().toLowerCase().includes(term.trim().toLowerCase())
+            this.filterdata = this.filterdata.filter(x => 
+                x.name.trim().toLowerCase().indexOf(term.trim().toLowerCase()) > -1
             );
         }
     }

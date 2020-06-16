@@ -17,7 +17,7 @@
             </div>
             <mat-divider></mat-divider>
             <div [ngStyle]="{padding: '20px 15px 0'}">
-                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of tableList">
+                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of filterdata">
                     <div [ngStyle]="{padding: '10px'}">
                         <div>{{data.name}}</div>
                     </div>
