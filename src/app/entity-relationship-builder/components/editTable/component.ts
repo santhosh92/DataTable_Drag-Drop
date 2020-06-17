@@ -15,7 +15,7 @@ export class EditTableComponent implements OnInit {
   tableList: any[];
   entityRelationship: any[];
   tableRelation : any[];
-  filterData: []
+  searchTerm: string;
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,7 +25,6 @@ export class EditTableComponent implements OnInit {
   ngOnInit() {
     console.log(this.data.tables);
     this.table = JSON.parse(JSON.stringify(this.data.currentTable));
-    this.filterData = this.table.columns;
     this.tableList = this.data.tables;
     this.tableRelation = this.data.tables.filter(data => this.table.name !== data.name);
     this.entityRelationship = this.data.entityRelationship.length > 0 ?  [...this.data.entityRelationship] : [{
@@ -36,16 +35,6 @@ export class EditTableComponent implements OnInit {
       'foreginKey': ''
     }];
   }
-
-  search(term: string) {
-    if(!term) {
-        this.filterData = this.table.columns;
-        } else {
-          this.filterData = this.table.columns.filter((x: { name: string; }) => 
-            x.name.trim().toLowerCase().includes(term.trim().toLowerCase())
-        );
-  }
-}
 
   addEr() {
     console.log(this.entityRelationship);

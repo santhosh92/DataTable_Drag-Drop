@@ -12,12 +12,12 @@
             <div>
                 <mat-form-field>
                     <mat-label>Search</mat-label>
-                    <input matInput name="searchData" type="search" (keyup)='search($event.target.value)'>
+                    <input matInput name="searchTerm" [(ngModel)]="searchTerm">
                 </mat-form-field>
             </div>
             <mat-divider></mat-divider>
             <div [ngStyle]="{padding: '20px 15px 0'}">
-                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of filterdata">
+                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dragData]="data" *ngFor="let data of tableList | filter:searchTerm">
                     <div [ngStyle]="{padding: '10px'}">
                         <div>{{data.name}}</div>
                     </div>

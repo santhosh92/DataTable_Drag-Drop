@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EditTableComponent } from './components/editTable/component';
 import {DndModule} from 'ng2-dnd';
 import { TableRelationComponent } from './components/table-relation/table-relation.component';
+import { FilterPipe } from '../filter.pipe';
 @NgModule({
     imports: [
         CommonModule,
@@ -26,7 +27,9 @@ import { TableRelationComponent } from './components/table-relation/table-relati
         BuildEntityComponent,
         EntityFieldComponent,
         EditTableComponent,
-        TableRelationComponent
+        TableRelationComponent,
+        FilterPipe
+        
     ],
     entryComponents: [BuildEntityComponent, EditTableComponent],
     exports: [

@@ -2,13 +2,13 @@
 <div>
     <mat-form-field>
         <mat-label>Search</mat-label>
-        <input matInput type="search" (keyup)='search($event.target.value)'>
+        <input matInput type="search" name="searchTerm" [(ngModel)]="searchTerm">
     </mat-form-field>
 </div>
 <form novalidate (ngSubmit)="save()">
     <div mat-dialog-content>
         <div class="result" fxLayout="column" fxLayout.lt-sm="column">
-            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let column of filterData; let i = index" fxLayoutGap="16px">
+            <div fxLayout.gt-sm="row" fxLayout.lt-sm="column" *ngFor="let column of table?.columns | filter:searchTerm; let i = index" fxLayoutGap="16px">
                 <mat-form-field appearance="standard" fxFlex>
                     <mat-label>Column Name</mat-label>
                     <input matInput [(ngModel)]="column.name" [name]="column.name" disabled>
